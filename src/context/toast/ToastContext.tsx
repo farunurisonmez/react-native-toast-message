@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { DeviceEventEmitter } from 'react-native';
+import ToastComp from '../../components/toast/ToastComp';
 
-interface Toast {
+interface IToast {
   message: string;
   type: 'success' | 'error';
 }
@@ -21,7 +22,7 @@ export const useToast = () => {
 };
 
 export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [toast, setToast] = useState<Toast | null>(null);
+  const [toast, setToast] = useState<IToast | null>(null);
 
   const showToast = (message: string, type: 'success' | 'error') => {
     setToast({ message, type });
@@ -32,6 +33,7 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
+      {toast && <ToastComp message={toast.message} />}
     </ToastContext.Provider>
   );
 };
