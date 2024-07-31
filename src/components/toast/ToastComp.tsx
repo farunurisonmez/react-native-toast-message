@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, DeviceEventEmitter } from 'react-native';
+// src/utils/helpers/toast/Toast.tsx
 
-interface ToastProps {
-  message: string;
-}
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import IToast from '../../types/interfaces/components/toast/IToastComp';
 
-const ToastComp: React.FC<ToastProps> = ({ message }) => {
-  const [visible, setVisible] = useState(true);
+const Toast = (props:IToast) => {
 
-  useEffect(() => {
-    const timeout = setTimeout(() => setVisible(false), 3000);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  if (!visible) return null;
-
+    const backgroundColor = 
+    props.type === 'success' ? 'green' :
+    props.type === 'error' ? 'red' :
+    props.type === 'warning' ? 'orange' :
+    'blue';
   return (
     <View style={styles.toastWrapper} pointerEvents="box-none">
-      <View style={styles.toastContainer}>
-        <Text style={styles.toastText}>{message}</Text>
+      <View style={[styles.toastContainer, { backgroundColor }]}>
+        <Text style={styles.toastText}>{props.message}</Text>
       </View>
     </View>
   );
@@ -33,7 +29,6 @@ const styles = StyleSheet.create({
     pointerEvents: 'box-none',
   },
   toastContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.65)',
     padding: 10,
     borderRadius: 5,
     marginBottom: 50,
@@ -43,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ToastComp;
+export default Toast;
