@@ -1,79 +1,71 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Toast Message
 
-# Getting Started
+This repository contains a simple and effective implementation of toast messages in React Native using `DeviceEventEmitter`. Toast messages are a great way to provide quick feedback to users in your application.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Overview
 
-## Step 1: Start the Metro Server
+Toast messages are used to display brief notifications to users. This project provides a basic setup for implementing toast notifications in React Native, allowing you to easily show success and error messages with customizable styling.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Features
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **Easy Integration**: Add toast notifications to any React Native app with minimal setup.
+- **Event-Driven Architecture**: Uses `DeviceEventEmitter` to manage toast events efficiently.
+- **Customizable**: Change the appearance and behavior of toast messages to fit your app's design.
 
-```bash
-# using npm
-npm start
+## Preview Video
 
-# OR using Yarn
-yarn start
-```
+Check out the quick preview of the toast message component on YouTube:
 
-## Step 2: Start your Application
+[![Toast Message Preview](https://img.youtube.com/vi/O8jXE0OAAek/0.jpg)](https://youtube.com/shorts/O8jXE0OAAek)
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## Getting Started
 
-### For Android
+Follow these steps to see the toast message component in action:
 
-```bash
-# using npm
-npm run android
+1. **Clone the repository:**
 
-# OR using Yarn
-yarn android
-```
+    ```bash
+    git clone https://github.com/farunurisonmez/react-native-toast-message.git
+    cd react-native-toast-message
+    ```
 
-### For iOS
+2. **Install dependencies:**
 
-```bash
-# using npm
-npm run ios
+    ```bash
+    npm install
+    ```
 
-# OR using Yarn
-yarn ios
-```
+3. **Run the app:**
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+    ```bash
+    npm start
+    ```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Usage
 
-## Step 3: Modifying your App
+Here's a basic example of how to use the toast message component in your React Native application:
 
-Now that you have successfully run the app, let's modify it.
+```tsx
+import React from 'react';
+import { View, Button } from 'react-native';
+import { ToastProvider } from './src/utils/helpers/toast/ToastContext';
+import { showSuccessToast, showErrorToast } from './src/utils/helpers/toast/ToastManager';
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+const App: React.FC = () => {
+  return (
+    <ToastProvider>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Button
+          title="Show Success Toast"
+          onPress={() => showSuccessToast('Success message')}
+        />
+        <Button
+          title="Show Error Toast"
+          onPress={() => showErrorToast('Error message')}
+        />
+      </View>
+    </ToastProvider>
+  );
+};
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+export default App;
