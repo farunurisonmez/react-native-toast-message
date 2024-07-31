@@ -18,6 +18,9 @@ Check out the quick preview of the toast message component on YouTube:
 
 [![Toast Message Preview](https://img.youtube.com/vi/O8jXE0OAAek/0.jpg)](https://youtube.com/shorts/O8jXE0OAAek)
 
+[![Toast Message Preview](https://img.youtube.com/vi/V0t7jZmpC-w/0.jpg)](https://youtube.com/shorts/V0t7jZmpC-w)
+
+
 ## Getting Started
 
 Follow these steps to see the toast message component in action:
